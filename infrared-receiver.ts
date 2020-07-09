@@ -22,7 +22,7 @@ const enum IrButton {
   //% block="1"
   Number_1 = 0x8,
   //% block="2"
-  Number_2 = 0x1c,
+  Number_2 = 0x4c,
   //% block="3"
   Number_3 = 0x5a,
   //% block="4"
@@ -32,17 +32,17 @@ const enum IrButton {
   //% block="6"
   Number_6 = 0x4a,
   //% block="7"
-  Number_7 = 0x42,
+  Number_7 = 0x5e,
   //% block="8"
-  Number_8 = 0x52,
+  Number_8 = 0x16,
   //% block="9"
-  Number_9 = 0x4a,
+  Number_9 = 0x47,
   //% block="*"
-  Star = 0x42,
+  Star = 0x18,
   //% block="0"
   Number_0 = 0xc,
   //% block="#"
-  Hash = 0x52,
+  Hash = 0x51,
 }
 
 const enum IrButtonAction {
@@ -85,6 +85,13 @@ namespace makerbit {
 
     if (irState.bitsReceived <= 8) {
       irState.hiword = (irState.hiword << 1) + bit;
+      if (irState.protocol === IrProtocol.Keyestudio && bit === 1) {
+        // recover from missing message bits at the beginning
+        // Keyestudio address is 0 and thus missing bits can be detected
+        // by checking for the first inverse address bit (which is a 1)
+        irState.bitsReceived = 9;
+        irState.hiword = 1;
+      }
     } else if (irState.bitsReceived <= 16) {
       irState.hiword = (irState.hiword << 1) + bit;
     } else if (irState.bitsReceived <= 32) {
@@ -147,7 +154,7 @@ namespace makerbit {
   /**
    * Connects to the IR receiver module at the specified pin and configures the IR protocol.
    * @param pin IR receiver pin, eg: DigitalPin.P0
-   * @param protocol IR protocol, eg: IrProtocol.NEC
+   * @param protocol IR protocol, eg: IrProtocol.Keyestudio
    */
   //% subcategory="IR Receiver"
   //% blockId="makerbit_infrared_connect_receiver"
