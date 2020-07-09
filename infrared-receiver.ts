@@ -1,5 +1,4 @@
-// MakerBit blocks supporting a Keyestudio Infrared Wireless Module Kit
-// (receiver module+remote controller)
+// Blocks for basic IR Remote
 
 const enum IrButton {
   //% block="any"
@@ -21,17 +20,17 @@ const enum IrButton {
   //% block=" "
   Unused_4 = -4,
   //% block="1"
-  Number_1 = 0xc,
+  Number_1 = 0x8,
   //% block="2"
-  Number_2 = 0x18,
+  Number_2 = 0x1c,
   //% block="3"
-  Number_3 = 0x5e,
+  Number_3 = 0x5a,
   //% block="4"
-  Number_4 = 0x8,
+  Number_4 = 0x42,
   //% block="5"
-  Number_5 = 0x1c,
+  Number_5 = 0x52,
   //% block="6"
-  Number_6 = 0x5a,
+  Number_6 = 0x4a,
   //% block="7"
   Number_7 = 0x42,
   //% block="8"
@@ -41,7 +40,7 @@ const enum IrButton {
   //% block="*"
   Star = 0x42,
   //% block="0"
-  Number_0 = 0x16,
+  Number_0 = 0xc,
   //% block="#"
   Hash = 0x52,
 }
@@ -54,8 +53,6 @@ const enum IrButtonAction {
 }
 
 const enum IrProtocol {
-  //% block="Keyestudio"
-  Keyestudio = 0,
   //% block="NEC"
   NEC = 1,
 }
