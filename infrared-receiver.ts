@@ -85,13 +85,6 @@ namespace makerbit {
 
     if (irState.bitsReceived <= 8) {
       irState.hiword = (irState.hiword << 1) + bit;
-      if (irState.protocol === IrProtocol.Keyestudio && bit === 1) {
-        // recover from missing message bits at the beginning
-        // Keyestudio address is 0 and thus missing bits can be detected
-        // by checking for the first inverse address bit (which is a 1)
-        irState.bitsReceived = 9;
-        irState.hiword = 1;
-      }
     } else if (irState.bitsReceived <= 16) {
       irState.hiword = (irState.hiword << 1) + bit;
     } else if (irState.bitsReceived <= 32) {
