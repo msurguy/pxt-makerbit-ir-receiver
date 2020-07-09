@@ -22,7 +22,6 @@
   "IrButton.Up|block": "▲",
   "IrButtonAction.Pressed|block": "pressed",
   "IrButtonAction.Released|block": "released",
-  "IrProtocol.Keyestudio|block": "Keyestudio",
   "IrProtocol.NEC|block": "NEC",
   "makerbit.connectIrReceiver|block": "connect IR receiver at pin %pin and decode %protocol",
   "makerbit.irButtonCode|block": "IR button code %button",

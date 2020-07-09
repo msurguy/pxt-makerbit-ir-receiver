@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/1010Technologies/pxt-makerbit-ir-receiver.svg?branch=master)](https://travis-ci.org/1010Technologies/pxt-makerbit-ir-receiver)
 
-MakeCode extension for Keyestudio Infrared Wireless Module Kit. The extension should also work with other with IR receivers and NEC compatible IR remotes.
+MakeCode extension for Car MP3 IR remote. The extension should also work with other with IR receivers and NEC compatible IR remotes.
 
 ## MakerBit Board
 
@@ -21,13 +21,13 @@ http://makerbit.com/
 Connects to the IR receiver module at the specified pin and configures the IR protocol.
 
 ```sig
-makerbit.connectIrReceiver(DigitalPin.P0, IrProtocol.Keyestudio)
+makerbit.connectIrReceiver(DigitalPin.P0, IrProtocol.NEC)
 ```
 
 ### Parameters
 
 - `pin` - digital pin with an attached IR receiver
-- `protocol` - the IR protocol to be detected, for example IrProtocol.Keyestudio or IrProtocol.NEC
+- `protocol` - the IR protocol to be detected, for example IrProtocol.NEC
 
 ## makerbit.onIrButton
 
@@ -94,7 +94,7 @@ makerbit.irButtonCode(IrButton.Number_9)
 ## MakeCode Example
 
 ```blocks
-makerbit.connectIrReceiver(DigitalPin.P0, IrProtocol.Keyestudio)
+makerbit.connectIrReceiver(DigitalPin.P0, IrProtocol.NEC)
 
 makerbit.onIrButton(IrButton.Ok, IrButtonAction.Released, function () {
     basic.showIcon(IconNames.SmallHeart)
